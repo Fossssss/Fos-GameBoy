@@ -128,8 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameBoy.cpp" />
-    <ClCompile Include="readCart.cpp" />
+    <ClCompile Include="cart.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cart.h" />
+    <ClInclude Include="common.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
