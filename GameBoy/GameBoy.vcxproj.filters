@@ -13,18 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="loadCart">
+      <UniqueIdentifier>{b378dc0d-98df-4995-bfb2-24ae0f32046d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cart.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cart.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="common.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="cart.h">
+      <Filter>loadCart</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cart.c">
+      <Filter>loadCart</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
