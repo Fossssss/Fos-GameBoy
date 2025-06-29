@@ -131,6 +131,7 @@
     <ClCompile Include="bus.c" />
     <ClCompile Include="cart.c" />
     <ClCompile Include="cpu.c" />
+    <ClCompile Include="cpu_util.c" />
     <ClCompile Include="instructions.c" />
   </ItemGroup>
   <ItemGroup>
