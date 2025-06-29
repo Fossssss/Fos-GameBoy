@@ -13,8 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="loadCart">
+    <Filter Include="bus">
+      <UniqueIdentifier>{c7947ba9-2383-4084-87dd-0c4ec414e5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cart">
       <UniqueIdentifier>{b378dc0d-98df-4995-bfb2-24ae0f32046d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpu">
+      <UniqueIdentifier>{64d5fe84-60d3-4586-9af6-54ecba8f2a2e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,12 +28,30 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="cart.h">
-      <Filter>loadCart</Filter>
+      <Filter>cart</Filter>
+    </ClInclude>
+    <ClInclude Include="bus.h">
+      <Filter>bus</Filter>
+    </ClInclude>
+    <ClInclude Include="cpu.h">
+      <Filter>cpu</Filter>
+    </ClInclude>
+    <ClInclude Include="instructions.h">
+      <Filter>cpu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cart.c">
-      <Filter>loadCart</Filter>
+      <Filter>cart</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu.c">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="bus.c">
+      <Filter>bus</Filter>
+    </ClCompile>
+    <ClCompile Include="instructions.c">
+      <Filter>cpu</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
