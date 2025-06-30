@@ -1,9 +1,6 @@
 #include "common.h"
 #include "cart.h"
-int main() {
-    cart_load("RoboCop (U).gb");
-    return 0;
-}
+#include <String.h>
 typedef struct {
 	char filename[1024];
 	u32 rom_size;

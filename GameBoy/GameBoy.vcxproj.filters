@@ -22,6 +22,9 @@
     <Filter Include="cpu">
       <UniqueIdentifier>{64d5fe84-60d3-4586-9af6-54ecba8f2a2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="emu">
+      <UniqueIdentifier>{09c94d6f-4cac-476e-ac65-77870c925dd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -39,6 +42,9 @@
     <ClInclude Include="instructions.h">
       <Filter>cpu</Filter>
     </ClInclude>
+    <ClInclude Include="emu.h">
+      <Filter>emu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cart.c">
@@ -53,8 +59,17 @@
     <ClCompile Include="instructions.c">
       <Filter>cpu</Filter>
     </ClCompile>
-    <ClCompile Include="cpu_util.c">
+    <ClCompile Include="emu.c">
+      <Filter>emu</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu_proc.c">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu_util.c">
+      <Filter>cpu</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\SDL\SDL2-devel-2.32.6-VC\SDL2-2.32.6\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\SDL\SDL2-devel-2.32.6-VC\SDL2-2.32.6\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\SDL\SDL2-devel-2.32.6-VC\SDL2-2.32.6\include;D:\SDL\SDL2_ttf-2.24.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\SDL\SDL2-devel-2.32.6-VC\SDL2-2.32.6\lib\x64;D:\SDL\SDL2_ttf-2.24.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -110,7 +110,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,14 +131,18 @@
     <ClCompile Include="bus.c" />
     <ClCompile Include="cart.c" />
     <ClCompile Include="cpu.c" />
+    <ClCompile Include="cpu_proc.c" />
     <ClCompile Include="cpu_util.c" />
+    <ClCompile Include="emu.c" />
     <ClCompile Include="instructions.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bus.h" />
     <ClInclude Include="cart.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="cpu.h" />
+    <ClInclude Include="emu.h" />
     <ClInclude Include="instructions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
