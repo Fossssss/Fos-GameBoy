@@ -1,20 +1,9 @@
+#include <windows.h>
 #include <stdio.h>
 #include "emu.h"
 #include "cart.h"
 #include "cpu.h"
-#include "SDL.h"
-#include "SDL_ttf.h"
-
-/*
-  Emu components:
-
-  |Cart|
-  |CPU|
-  |Address Bus|
-  |PPU|
-  |Timer|
-
-*/
+#include "ui.h"
 
 static emu_context ctx;
 
@@ -22,8 +11,27 @@ emu_context* emu_get_context() {
     return &ctx;
 }
 
-void delay(u32 ms) {
-    SDL_Delay(ms);
+DWORD WINAPI cpu_run(LPVOID p) {
+    cpu_init();
+
+    ctx.running = true;
+    ctx.paused = false;
+    ctx.ticks = 0;
+
+    while (ctx.running) {
+        if (ctx.paused) {
+            delay(10);
+            continue;
+        }
+
+        if (!cpu_step()) {
+            printf("CPU Stopped\n");
+            return 0;
+        }
+
+        ctx.ticks++;
+    }
+    return 0;
 }
 
 int emu_run(int argc, char** argv) {
@@ -39,34 +47,25 @@ int emu_run(int argc, char** argv) {
 
     printf("Cart loaded..\n");
 
-    SDL_Init(SDL_INIT_VIDEO);
-    printf("SDL INIT\n");
-    TTF_Init();
-    printf("TTF INIT\n");
+    ui_init();
 
-    cpu_init();
+    HANDLE t1 = CreateThread(
+        NULL, 0, cpu_run, NULL, 0, NULL
+    );
 
-    ctx.running = true;
-    ctx.paused = false;
-    ctx.ticks = 0;
-
-    while (ctx.running) {
-        if (ctx.paused) {
-            delay(10);
-            continue;
-        }
-
-        if (!cpu_step()) {
-            printf("CPU Stopped\n");
-            return -3;
-        }
-
-        ctx.ticks++;
+    if (t1 == NULL) {
+        fprintf(stderr, "FAILED TO START MAIN CPU THREAD!\n");
+        return -1;
     }
+    while (!ctx.die) {
+        Sleep(1); 
+        ui_handle_events();
+    }
+    CloseHandle(t1);
 
     return 0;
 }
 
 void emu_cycles(int cpu_cycles) {
-    //TODO...
+    // TODO...
 }

@@ -11,38 +11,7 @@ static void fetch_instruction() {
 	ctx.cur_opcode = bus_read(ctx.regs.pc++);
 	ctx.cur_inst = instruction_by_opcode(ctx.cur_opcode);
 }
-static void fetch_data() {
-	ctx.mem_dest = 0;
-	ctx.dest_is_mem = false;
-	if (ctx.cur_inst == NULL) {
-		return;
-	}
-	switch (ctx.cur_inst->mode) {
-		case AM_IMP: return;
-		case AM_R:
-			ctx.fetch_data = cpu_read_reg(ctx.cur_inst->reg_1);
-			return;
-		case AM_R_D8:
-			ctx.fetch_data = bus_read(ctx.regs.pc);
-			emu_cycles(1);
-			ctx.regs.pc++;
-			return;
-		case AM_D16: {
-			u16 lo = bus_read(ctx.regs.pc);
-			emu_cycles(1);
-			u16 hi = bus_read(ctx.regs.pc + 1);
-			emu_cycles(1);
-			ctx.fetch_data = lo | (hi << 8);
-			ctx.regs.pc += 2;
-			return;
-		}
-		default:
-			printf("Unknown Addressing Mode! %d\n", ctx.cur_inst->mode);
-			exit(-7);
-			return;
-
-	}
-}
+void fetch_data();
 static void execute() {
 	IN_PROC proc = inst_get_processor(ctx.cur_inst->type);
 	if (!proc) {
@@ -51,22 +20,41 @@ static void execute() {
 	proc(&ctx);
 }
 bool cpu_step() {
-	if (!ctx.halted) {
-		u16 pc = ctx.regs.pc;
 
-		fetch_instruction();
-		fetch_data();
-		printf("%04X: %-7s (%02X %02X %02X) A: %02X B: %02X C: %02X\n",
-			pc, inst_name(ctx.cur_inst->type), ctx.cur_opcode,
-			bus_read(pc + 1), bus_read(pc + 2), ctx.regs.a, ctx.regs.b, ctx.regs.c);
+    if (!ctx.halted) {
+        u16 pc = ctx.regs.pc;
 
-		if (ctx.cur_inst == NULL) {
-			printf("Unknown Instruction! %02X\n", ctx.cur_opcode);
-			exit(-7);
-		}
+        fetch_instruction();
+        emu_cycles(1);
+        fetch_data();
+        
+        char flags[16];
+        sprintf_s(flags, sizeof(flags),"%c%c%c%c",
+            ctx.regs.f & (1 << 7) ? 'Z' : '-',
+            ctx.regs.f & (1 << 6) ? 'N' : '-',
+            ctx.regs.f & (1 << 5) ? 'H' : '-',
+            ctx.regs.f & (1 << 4) ? 'C' : '-'
+        );
+        printf("%08lX - %04X: %-7s (%02X %02X %02X) A: %02X F: %s BC: %02X%02X DE: %02X%02X HL: %02X%02X\n",
+            emu_get_context()->ticks,
+            pc, inst_name(ctx.cur_inst->type), ctx.cur_opcode,
+            bus_read(pc + 1), bus_read(pc + 2), ctx.regs.a, flags, ctx.regs.b, ctx.regs.c,
+            ctx.regs.d, ctx.regs.e, ctx.regs.h, ctx.regs.l);
 
-		execute();
-	}
+        if (ctx.cur_inst == NULL) {
+            printf("Unknown Instruction! %02X\n", ctx.cur_opcode);
+            exit(-7);
+        }
 
-	return true;
+        execute();
+    }
+
+    return true;
+}
+u8 cpu_get_ie_register() {
+	return ctx.ie_register;
+}
+
+void cpu_set_ie_register(u8 n) {
+	ctx.ie_register = n;
 }

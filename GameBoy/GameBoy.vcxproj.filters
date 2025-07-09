@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="bus">
       <UniqueIdentifier>{c7947ba9-2383-4084-87dd-0c4ec414e5bd}</UniqueIdentifier>
     </Filter>
@@ -24,6 +20,27 @@
     </Filter>
     <Filter Include="emu">
       <UniqueIdentifier>{09c94d6f-4cac-476e-ac65-77870c925dd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ppu">
+      <UniqueIdentifier>{79ecb022-b559-4b1c-a7c6-786b917e1d12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="instructions">
+      <UniqueIdentifier>{0a6a4134-98c2-4451-b4d8-8f4f7969c165}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="timer">
+      <UniqueIdentifier>{3500fa55-b93c-4c01-a882-bb2d6fb7e554}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ram">
+      <UniqueIdentifier>{87c7191d-3873-4772-82cc-c16dcb6ca7f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stack">
+      <UniqueIdentifier>{a522e95f-0e8a-424d-bc85-9c867fbf6ba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interrupt">
+      <UniqueIdentifier>{1792db3a-26f1-4ed3-a869-3508ffd23c55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{2d7120de-4ba6-46bb-b17f-850d4826a942}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,11 +56,29 @@
     <ClInclude Include="cpu.h">
       <Filter>cpu</Filter>
     </ClInclude>
-    <ClInclude Include="instructions.h">
-      <Filter>cpu</Filter>
-    </ClInclude>
     <ClInclude Include="emu.h">
       <Filter>emu</Filter>
+    </ClInclude>
+    <ClInclude Include="ppu.h">
+      <Filter>ppu</Filter>
+    </ClInclude>
+    <ClInclude Include="instructions.h">
+      <Filter>instructions</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>timer</Filter>
+    </ClInclude>
+    <ClInclude Include="ram.h">
+      <Filter>ram</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>stack</Filter>
+    </ClInclude>
+    <ClInclude Include="interrupts.h">
+      <Filter>interrupt</Filter>
+    </ClInclude>
+    <ClInclude Include="ui.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -56,9 +91,6 @@
     <ClCompile Include="bus.c">
       <Filter>bus</Filter>
     </ClCompile>
-    <ClCompile Include="instructions.c">
-      <Filter>cpu</Filter>
-    </ClCompile>
     <ClCompile Include="emu.c">
       <Filter>emu</Filter>
     </ClCompile>
@@ -70,6 +102,30 @@
     </ClCompile>
     <ClCompile Include="cpu_util.c">
       <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="ppu.c">
+      <Filter>ppu</Filter>
+    </ClCompile>
+    <ClCompile Include="instructions.c">
+      <Filter>instructions</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu_fetch.c">
+      <Filter>cpu</Filter>
+    </ClCompile>
+    <ClCompile Include="ram.c">
+      <Filter>ram</Filter>
+    </ClCompile>
+    <ClCompile Include="stack.c">
+      <Filter>stack</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.c">
+      <Filter>timer</Filter>
+    </ClCompile>
+    <ClCompile Include="interrupts.c">
+      <Filter>interrupt</Filter>
+    </ClCompile>
+    <ClCompile Include="ui.c">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

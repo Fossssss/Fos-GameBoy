@@ -131,11 +131,18 @@
     <ClCompile Include="bus.c" />
     <ClCompile Include="cart.c" />
     <ClCompile Include="cpu.c" />
+    <ClCompile Include="cpu_fetch.c" />
     <ClCompile Include="cpu_proc.c" />
     <ClCompile Include="cpu_util.c" />
     <ClCompile Include="emu.c" />
     <ClCompile Include="instructions.c" />
+    <ClCompile Include="interrupts.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="ppu.c" />
+    <ClCompile Include="ram.c" />
+    <ClCompile Include="stack.c" />
+    <ClCompile Include="timer.c" />
+    <ClCompile Include="ui.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bus.h" />
@@ -144,6 +151,12 @@
     <ClInclude Include="cpu.h" />
     <ClInclude Include="emu.h" />
     <ClInclude Include="instructions.h" />
+    <ClInclude Include="interrupts.h" />
+    <ClInclude Include="ppu.h" />
+    <ClInclude Include="ram.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="timer.h" />
+    <ClInclude Include="ui.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
